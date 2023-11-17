@@ -89,14 +89,21 @@ export default function Index({ dataPage }) {
 
   ////////////////////////////////
   /////// LAYOUT NEXTGAME
+  const [bg, setBG] = useState(false)
+  const [team1, setTeam1] = useState('HOR')
+  const [team2, setTeam2] = useState('TCS')
+  const [logoteam1, setLogoTeam1] = useState('hornet')
+  const [logoteam2, setLogoTeam2] = useState('chickenslayers')
+
   const targetTimezone = 'Asia/Ho_Chi_Minh'; // (GMT+7)
+  const [timeCountDown, setTimeCountDown] = useState(19)
   const [countdown, setCountdown] = useState(
-    calculateCountdown(targetTimezone)
+    calculateCountdown(timeCountDown, targetTimezone)
   );
 
   useEffect(() => {
     const countdownInterval = setInterval(() => {
-      const newCountdown = calculateCountdown(targetTimezone);
+      const newCountdown = calculateCountdown(timeCountDown, targetTimezone);
       setCountdown(newCountdown);
 
       // Check if the target time has been reached
@@ -108,7 +115,20 @@ export default function Index({ dataPage }) {
 
     // Cleanup the interval on component unmount
     return () => clearInterval(countdownInterval);
-  }, []);
+  });
+
+  useEffect(() => {
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+
+    let bg = urlParams.get('bg');
+    let match2 = urlParams.get('match2');
+    let bgmatch2 = urlParams.get('bgmatch2');
+
+    if (bg) setBG(true)
+    if (match2) setTimeCountDown(20), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
+    if (bgmatch2) setBG(true), setTimeCountDown(20), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
+  }, [])
 
 
   ////////////////////////////////
@@ -174,11 +194,33 @@ export default function Index({ dataPage }) {
 
       {
         dataPage && dataPage.slug == 'nextgame' &&
-        <main className={styles.root3} >
-          <div>
-            <p>
-              Time left: {countdown.minutes} minutes, {countdown.seconds} seconds
-            </p>
+        <main className={`${styles.root3} ${bg ? styles.bg : ''}`} >
+          <header dangerouslySetInnerHTML={{ __html: `GROUP STAGE - DAY 1 (17<sup>th</sup> NOV) ` }} />
+          <div className={styles.board}>
+            <div className={styles.content}>
+              <div>
+                <h2>COMING UP NEXT</h2>
+                <div className={styles.team}>
+                  <div className={styles.team1}>
+                    {team1}
+                    <img src={`/images/logoteam/Team${logoteam1}.png`} />
+                  </div>
+
+                  <span>VS</span>
+
+                  <div className={styles.team2}>
+                    {team2}
+                    <img src={`/images/logoteam/Team${logoteam2}.png`} />
+                  </div>
+                </div>
+
+                <p className={styles.time}>
+                  <span>{countdown.minutes < 10 ? '0' + countdown.minutes : countdown.minutes}</span>
+                  <span>:</span>
+                  <span>{countdown.seconds < 10 ? '0' + countdown.seconds : countdown.seconds}</span>
+                </p>
+              </div>
+            </div>
           </div>
         </main>
       }
