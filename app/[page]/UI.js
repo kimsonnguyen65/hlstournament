@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from "react";
 import styles from './styles.module.scss'
 
+// DATE TIME
+import { calculateCountdown } from '@/utils/countdown';
+
 export default function Index({ dataPage }) {
   // console.log(dataPage)
   // return null
@@ -50,7 +53,7 @@ export default function Index({ dataPage }) {
     // console.log(day)
     return () => clearInterval(intervalId);
   }, [day.number])
-  
+
   // console.log(dataPage.schedule[day.number])
 
   ////////////////////////////////
@@ -82,6 +85,31 @@ export default function Index({ dataPage }) {
     if (day3match4) setMatch(4), setDayIngame(3);
     if (day3match5) setMatch(5), setDayIngame(3);
   }, [])
+
+
+  ////////////////////////////////
+  /////// LAYOUT NEXTGAME
+  const targetTimezone = 'Asia/Ho_Chi_Minh'; // (GMT+7)
+  const [countdown, setCountdown] = useState(
+    calculateCountdown(targetTimezone)
+  );
+
+  useEffect(() => {
+    const countdownInterval = setInterval(() => {
+      const newCountdown = calculateCountdown(targetTimezone);
+      setCountdown(newCountdown);
+
+      // Check if the target time has been reached
+      if (newCountdown.minutes <= 0 && newCountdown.seconds <= 0) {
+        console.log('Countdown reached!'); // You can perform any action when the countdown reaches zero
+        clearInterval(countdownInterval); // Stop the countdown interval
+      }
+    }, 1000);
+
+    // Cleanup the interval on component unmount
+    return () => clearInterval(countdownInterval);
+  }, []);
+
 
   ////////////////////////////////
   // RETURN
@@ -141,6 +169,17 @@ export default function Index({ dataPage }) {
               <span>{dataPage.day[dayIngame - 1].match[match - 1].team2.toUpperCase()}</span>
             </div>
           </nav>
+        </main>
+      }
+
+      {
+        dataPage && dataPage.slug == 'nextgame' &&
+        <main className={styles.root3} >
+          <div>
+            <p>
+              Time left: {countdown.minutes} minutes, {countdown.seconds} seconds
+            </p>
+          </div>
         </main>
       }
     </>
