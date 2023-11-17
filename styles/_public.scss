@@ -1,0 +1,28 @@
+html {
+    font-size: $fontsize-root + px;
+    @include toVH(font-size, 1.95)
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    @include toVH(height, 100);
+    overflow: hidden;
+    background: url('/images/output.mp4');
+    color: $color-white;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}

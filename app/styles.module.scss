@@ -1,0 +1,12 @@
+@import "@/styles/variables";
+@import "@/styles/breakpoint";
+@import "@/styles/font";
+
+.root {
+  height: 100%;
+
+  video {
+    height: 100%;
+    object-fit: cover;
+  }
+}

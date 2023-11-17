@@ -1,0 +1,11 @@
+@mixin FontLight () {
+	font-weight: 200;
+}
+
+@mixin FontRegular () {
+	font-weight: normal;
+}
+
+@mixin FontBold () {
+	font-weight: bold;
+}
