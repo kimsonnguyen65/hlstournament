@@ -1,14 +1,14 @@
 // utils/countdown.js
 import { DateTime } from 'luxon';
 
-export function calculateCountdown(hour, minute, timeZone) {
+export function calculateCountdown(hour, minute, second, timeZone) {
     const now = DateTime.now().setZone(timeZone);
     // console.log(now)
     // return null
     const targetDateTime = now.set({
         hour: hour,
         minute: minute,
-        second: 0,
+        second: second,
     });
 
     // Calculate the difference between now and the target time

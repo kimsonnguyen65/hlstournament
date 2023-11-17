@@ -96,16 +96,19 @@ export default function Index({ dataPage }) {
   const [logoteam2, setLogoTeam2] = useState('chickenslayers')
 
   const targetTimezone = 'Asia/Ho_Chi_Minh'; // (GMT+7)
-  const [hourCountDown, setHourCountDown] = useState(19)
-  const [minuteCountDown, setMinuteCountDown] = useState(15)
+  const [hourCountDown, setHourCountDown] = useState(21)
+  const [minuteCountDown, setMinuteCountDown] = useState(22)
+  const [secondCountDown, setSecondCountDown] = useState(0)
   const [countdown, setCountdown] = useState(
-    calculateCountdown(hourCountDown, minuteCountDown, targetTimezone)
+    calculateCountdown(hourCountDown, minuteCountDown, secondCountDown, targetTimezone)
   );
 
   useEffect(() => {
     const countdownInterval = setInterval(() => {
-      const newCountdown = calculateCountdown(hourCountDown, minuteCountDown, targetTimezone);
+      const newCountdown = calculateCountdown(hourCountDown, minuteCountDown, secondCountDown, targetTimezone);
       setCountdown(newCountdown);
+
+      console.log(newCountdown.minutes, newCountdown.seconds)
 
       // Check if the target time has been reached
       if (newCountdown.minutes <= 0 && newCountdown.seconds <= 0) {
@@ -116,7 +119,7 @@ export default function Index({ dataPage }) {
 
     // Cleanup the interval on component unmount
     return () => clearInterval(countdownInterval);
-  });
+  }, [hourCountDown, minuteCountDown, secondCountDown]);
 
   useEffect(() => {
     let queryString = window.location.search;
@@ -127,8 +130,8 @@ export default function Index({ dataPage }) {
     let bgmatch2 = urlParams.get('bgmatch2');
 
     if (bg) setBG(true)
-    if (match2) setHourCountDown(20), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
-    if (bgmatch2) setBG(true), setHourCountDown(20) ,setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
+    if (match2) setHourCountDown(21), setMinuteCountDown(27), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
+    if (bgmatch2) setBG(true), setHourCountDown(20), setMinuteCountDown(30), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
   }, [])
 
 
