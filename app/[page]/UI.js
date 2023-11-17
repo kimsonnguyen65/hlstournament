@@ -96,14 +96,15 @@ export default function Index({ dataPage }) {
   const [logoteam2, setLogoTeam2] = useState('chickenslayers')
 
   const targetTimezone = 'Asia/Ho_Chi_Minh'; // (GMT+7)
-  const [timeCountDown, setTimeCountDown] = useState(19)
+  const [hourCountDown, setHourCountDown] = useState(19)
+  const [minuteCountDown, setMinuteCountDown] = useState(30)
   const [countdown, setCountdown] = useState(
-    calculateCountdown(timeCountDown, targetTimezone)
+    calculateCountdown(hourCountDown, minuteCountDown, targetTimezone)
   );
 
   useEffect(() => {
     const countdownInterval = setInterval(() => {
-      const newCountdown = calculateCountdown(timeCountDown, targetTimezone);
+      const newCountdown = calculateCountdown(hourCountDown, minuteCountDown, targetTimezone);
       setCountdown(newCountdown);
 
       // Check if the target time has been reached
@@ -126,8 +127,8 @@ export default function Index({ dataPage }) {
     let bgmatch2 = urlParams.get('bgmatch2');
 
     if (bg) setBG(true)
-    if (match2) setTimeCountDown(20), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
-    if (bgmatch2) setBG(true), setTimeCountDown(20), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
+    if (match2) setHourCountDown(20), setMinuteCountDown(0), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
+    if (bgmatch2) setBG(true), setHourCountDown(20), setMinuteCountDown(0) ,setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
   }, [])
 
 
