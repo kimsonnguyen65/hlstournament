@@ -97,7 +97,7 @@ export default function Index({ dataPage }) {
 
   const targetTimezone = 'Asia/Ho_Chi_Minh'; // (GMT+7)
   const [hourCountDown, setHourCountDown] = useState(19)
-  const [minuteCountDown, setMinuteCountDown] = useState(30)
+  const [minuteCountDown, setMinuteCountDown] = useState(15)
   const [countdown, setCountdown] = useState(
     calculateCountdown(hourCountDown, minuteCountDown, targetTimezone)
   );
