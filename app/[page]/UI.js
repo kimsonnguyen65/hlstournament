@@ -131,7 +131,7 @@ export default function Index({ dataPage }) {
 
     if (bg) setBG(true)
     if (match2) setHourCountDown(21), setMinuteCountDown(27), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
-    if (bgmatch2) setBG(true), setHourCountDown(20), setMinuteCountDown(30), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
+    if (bgmatch2) setBG(true), setHourCountDown(21), setMinuteCountDown(30), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
   }, [])
 
 
