@@ -28,7 +28,7 @@ export default function Index({ dataPage }) {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      if (day.number >= 0 && day.number < 2) {
+      if (day.number >= 0 && day.number < 3) {
         setTimeout(() => {
           setDay(prevDay => ({
             ...prevDay,
@@ -50,7 +50,8 @@ export default function Index({ dataPage }) {
     // console.log(day)
     return () => clearInterval(intervalId);
   }, [day.number])
-  // console.log(dataPage && dataPage.slug == 'schedule')
+  
+  // console.log(dataPage.schedule[day.number])
 
   ////////////////////////////////
   /////// TEAM INGAME
@@ -70,7 +71,7 @@ export default function Index({ dataPage }) {
     let day3match3 = urlParams.get('day3match3');
     let day3match4 = urlParams.get('day3match4');
     let day3match5 = urlParams.get('day3match5');
-    
+
     if (day1match2) setMatch(2);
     if (day2match1) setMatch(1), setDayIngame(2);
     if (day2match2) setMatch(2), setDayIngame(2);
@@ -89,30 +90,40 @@ export default function Index({ dataPage }) {
       {
         dataPage && dataPage.slug == 'schedule' &&
         <main className={`${styles.root1} ${transition ? styles.transition : ''}`}>
-          <header dangerouslySetInnerHTML={{ __html: `GROUP STAGE - DAY ${day.number + 1} ${day.date[day.number]}` }} />
-          <div className={styles.schedule}>
-            <div className={styles.content}>
-              {
-                dataPage.schedule[day.number] && dataPage.schedule[day.number].map((e, i) => {
-                  return (
-                    <div key={i} className={styles.team}>
-                      <div className={`${styles.team1} ${e.lose1 ? styles.lose : ''}`}>
-                        {type === 'full' ? e.team1.toUpperCase() : e.tag1.toUpperCase()}
-                        <img src={e.team1 == 'chicken slayers' ? `/images/logoteam/Teamchickenslayers.png` : `/images/logoteam/Team${e.team1}.png`} alt={e.team1} />
-                      </div>
+          {
+            dataPage && (day.number < 4 && day.number > 0) &&
+            <>
+              <header dangerouslySetInnerHTML={{ __html: `GROUP STAGE - DAY ${day.number} ${day.date[day.number - 1]}` }} />
+              <div className={styles.schedule}>
+                <div className={styles.content}>
+                  {
+                    dataPage.schedule[day.number - 1] && dataPage.schedule[day.number - 1].map((e, i) => {
+                      return (
+                        <div key={i} className={styles.team}>
+                          <div className={`${styles.team1} ${e.lose1 ? styles.lose : ''}`}>
+                            {type === 'full' ? e.team1.toUpperCase() : e.tag1.toUpperCase()}
+                            <img src={e.team1 == 'chicken slayers' ? `/images/logoteam/Teamchickenslayers.png` : `/images/logoteam/Team${e.team1}.png`} alt={e.team1} />
+                          </div>
 
-                      <span>VS</span>
+                          <span>VS</span>
 
-                      <div className={`${styles.team2} ${e.lose2 ? styles.lose : ''}`}>
-                        {type === 'full' ? e.team2.toUpperCase() : e.tag2.toUpperCase()}
-                        <img src={e.team2 == 'chicken slayers' ? `/images/logoteam/Teamchickenslayers.png` : `/images/logoteam/Team${e.team2}.png`} alt={e.team2} />
-                      </div>
-                    </div>
-                  )
-                })
-              }
-            </div>
-          </div>
+                          <div className={`${styles.team2} ${e.lose2 ? styles.lose : ''}`}>
+                            {type === 'full' ? e.team2.toUpperCase() : e.tag2.toUpperCase()}
+                            <img src={e.team2 == 'chicken slayers' ? `/images/logoteam/Teamchickenslayers.png` : `/images/logoteam/Team${e.team2}.png`} alt={e.team2} />
+                          </div>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              </div>
+            </>
+          }
+
+          {
+            dataPage && day.number == 0 &&
+            <img src="/images/MainBanner.jpg" alt="MainBanner"></img>
+          }
         </main>
       }
 
