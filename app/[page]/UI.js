@@ -139,7 +139,7 @@ export default function Index({ dataPage }) {
 
     // test
     let test = urlParams.get('test');
-    if (test) setHourCountDown(12), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('2K'), setLogoTeam1('pdsi'), setLogoTeam2('2k')
+    if (test) setHourCountDown(12), setMinuteCountDown(40), setTeam1('PDSI'), setTeam2('2K'), setLogoTeam1('pdsi'), setLogoTeam2('2k')
 
   }, [])
 
