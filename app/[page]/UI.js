@@ -11,7 +11,7 @@ export default function Index({ dataPage }) {
   /////////////////////////////
   ////// TRANSITION SCHEDULE
   const [day, setDay] = useState({
-    number: 2,
+    number: 0,
     date: [
       '(17<sup>th</sup> NOV)',
       '(18<sup>th</sup> NOV)',
@@ -29,30 +29,30 @@ export default function Index({ dataPage }) {
     }, 1100)
   }
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     if (day.number >= 0 && day.number < 3) {
-  //       setTimeout(() => {
-  //         setDay(prevDay => ({
-  //           ...prevDay,
-  //           number: prevDay.number + 1
-  //         }));
-  //       }, 500)
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (day.number >= 0 && day.number < 3) {
+        setTimeout(() => {
+          setDay(prevDay => ({
+            ...prevDay,
+            number: prevDay.number + 1
+          }));
+        }, 500)
 
-  //       handleTransition()
-  //     } else {
-  //       setTimeout(() => {
-  //         setDay(prevDay => ({
-  //           ...prevDay,
-  //           number: 0
-  //         }));
-  //       }, 500)
-  //       handleTransition()
-  //     }
-  //   }, 2000)
-  //   // console.log(day)
-  //   return () => clearInterval(intervalId);
-  // }, [day.number])
+        handleTransition()
+      } else {
+        setTimeout(() => {
+          setDay(prevDay => ({
+            ...prevDay,
+            number: 0
+          }));
+        }, 500)
+        handleTransition()
+      }
+    }, 10000)
+    // console.log(day)
+    return () => clearInterval(intervalId);
+  }, [day.number])
 
   // console.log(dataPage.schedule[day.number])
 
