@@ -11,7 +11,7 @@ export default function Index({ dataPage }) {
   /////////////////////////////
   ////// TRANSITION SCHEDULE
   const [day, setDay] = useState({
-    number: 0,
+    number: 2,
     date: [
       '(17<sup>th</sup> NOV)',
       '(18<sup>th</sup> NOV)',
@@ -29,30 +29,30 @@ export default function Index({ dataPage }) {
     }, 1100)
   }
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (day.number >= 0 && day.number < 3) {
-        setTimeout(() => {
-          setDay(prevDay => ({
-            ...prevDay,
-            number: prevDay.number + 1
-          }));
-        }, 500)
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     if (day.number >= 0 && day.number < 3) {
+  //       setTimeout(() => {
+  //         setDay(prevDay => ({
+  //           ...prevDay,
+  //           number: prevDay.number + 1
+  //         }));
+  //       }, 500)
 
-        handleTransition()
-      } else {
-        setTimeout(() => {
-          setDay(prevDay => ({
-            ...prevDay,
-            number: 0
-          }));
-        }, 500)
-        handleTransition()
-      }
-    }, 10000)
-    // console.log(day)
-    return () => clearInterval(intervalId);
-  }, [day.number])
+  //       handleTransition()
+  //     } else {
+  //       setTimeout(() => {
+  //         setDay(prevDay => ({
+  //           ...prevDay,
+  //           number: 0
+  //         }));
+  //       }, 500)
+  //       handleTransition()
+  //     }
+  //   }, 2000)
+  //   // console.log(day)
+  //   return () => clearInterval(intervalId);
+  // }, [day.number])
 
   // console.log(dataPage.schedule[day.number])
 
@@ -90,14 +90,14 @@ export default function Index({ dataPage }) {
   ////////////////////////////////
   /////// LAYOUT NEXTGAME
   const [bg, setBG] = useState(false)
-  const [team1, setTeam1] = useState('HOR')
-  const [team2, setTeam2] = useState('TCS')
-  const [logoteam1, setLogoTeam1] = useState('hornet')
-  const [logoteam2, setLogoTeam2] = useState('chickenslayers')
+  const [team1, setTeam1] = useState('COM')
+  const [team2, setTeam2] = useState('PDSI')
+  const [logoteam1, setLogoTeam1] = useState('combatant')
+  const [logoteam2, setLogoTeam2] = useState('pdsi')
 
   const targetTimezone = 'Asia/Ho_Chi_Minh'; // (GMT+7)
-  const [hourCountDown, setHourCountDown] = useState(21)
-  const [minuteCountDown, setMinuteCountDown] = useState(22)
+  const [hourCountDown, setHourCountDown] = useState(16)
+  const [minuteCountDown, setMinuteCountDown] = useState(0)
   const [secondCountDown, setSecondCountDown] = useState(0)
   const [countdown, setCountdown] = useState(
     calculateCountdown(hourCountDown, minuteCountDown, secondCountDown, targetTimezone)
@@ -108,7 +108,7 @@ export default function Index({ dataPage }) {
       const newCountdown = calculateCountdown(hourCountDown, minuteCountDown, secondCountDown, targetTimezone);
       setCountdown(newCountdown);
 
-      console.log(newCountdown.minutes, newCountdown.seconds)
+      // console.log(newCountdown.minutes, newCountdown.seconds)
 
       // Check if the target time has been reached
       if (newCountdown.minutes <= 0 && newCountdown.seconds <= 0) {
@@ -128,10 +128,14 @@ export default function Index({ dataPage }) {
     let bg = urlParams.get('bg');
     let match2 = urlParams.get('match2');
     let bgmatch2 = urlParams.get('bgmatch2');
+    let match3 = urlParams.get('match3');
+    let bgmatch3 = urlParams.get('bgmatch3');
 
     if (bg) setBG(true)
-    if (match2) setHourCountDown(21), setMinuteCountDown(27), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
-    if (bgmatch2) setBG(true), setHourCountDown(21), setMinuteCountDown(30), setTeam1('TCS'), setTeam2('COM'), setLogoTeam1('chickenslayers'), setLogoTeam2('combatant')
+    if (match2) setHourCountDown(17), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('2K'), setLogoTeam1('pdsi'), setLogoTeam2('2k')
+    if (bgmatch2) setBG(true), setHourCountDown(17), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('2K'), setLogoTeam1('pdsi'), setLogoTeam2('2k')
+    if (match3) setHourCountDown(17), setMinuteCountDown(0), setTeam1('2K'), setTeam2('HOR'), setLogoTeam1('2k'), setLogoTeam2('hornet')
+    if (bgmatch3) setBG(true), setHourCountDown(17), setMinuteCountDown(0), setTeam1('2K'), setTeam2('HOR'), setLogoTeam1('2k'), setLogoTeam2('hornet')
   }, [])
 
 
@@ -199,7 +203,7 @@ export default function Index({ dataPage }) {
       {
         dataPage && dataPage.slug == 'nextgame' &&
         <main className={`${styles.root3} ${bg ? styles.bg : ''}`} >
-          <header dangerouslySetInnerHTML={{ __html: `GROUP STAGE - DAY 1 (17<sup>th</sup> NOV) ` }} />
+          <header dangerouslySetInnerHTML={{ __html: `GROUP STAGE - DAY 2 (18<sup>th</sup> NOV) ` }} />
           <div className={styles.board}>
             <div className={styles.content}>
               <div>
