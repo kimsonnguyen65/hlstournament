@@ -137,6 +137,69 @@
             }
         }
     }
+
+    .board_layer {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1620px;
+        height: 80vh;
+        border: 10px solid $color-white;
+
+        border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+        animation: borderRotate var(--d) linear infinite forwards;
+
+        .result_board {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1600px;
+            font-size: 5vh;
+            margin: 0 auto;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            @include FontBold();
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 4vh;
+            text-align: left;
+        }
+
+        th {
+            background-color: transparent;
+        }
+
+        tr {
+
+            th,
+            td {
+                &:last-child {
+                    text-align: center;
+                }
+            }
+
+            td {
+                &:first-child {
+                    position: relative;
+                    padding-left: 16vh;
+
+                    img {
+                        position: absolute;
+                        width: 7.5%;
+                        object-fit: contain;
+                        left: 4vh;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+        }
+    }
 }
 
 // TEAM INGAME
@@ -180,7 +243,7 @@
     height: 100%;
     // background-color: black;
 
-    &.bg{
+    &.bg {
         background-color: black;
     }
 
@@ -265,22 +328,22 @@
                     align-items: center;
                     @include FontBold;
                     font-size: 6vw;
-    
+
                     &:not(:last-child) {
                         margin-bottom: 3vh;
                     }
-    
+
                     img {
                         width: 25%;
                     }
-    
+
                     .team1 {
                         width: 45%;
                         display: flex;
                         gap: 2vw;
                         align-items: center;
                         justify-content: flex-end;
-    
+
                         &.lose {
                             -webkit-filter: grayscale(100%);
                             /* Safari 6.0 - 9.0 */
@@ -288,13 +351,13 @@
                             opacity: .5;
                         }
                     }
-    
+
                     span {
                         width: 10%;
                         text-align: center;
                         font-size: 2.5vw;
                     }
-    
+
                     .team2 {
                         flex: 1;
                         display: flex;
@@ -302,13 +365,193 @@
                         flex-direction: row-reverse;
                         align-items: center;
                         justify-content: flex-end;
-    
+
                         &.lose {
                             -webkit-filter: grayscale(100%);
                             /* Safari 6.0 - 9.0 */
                             filter: grayscale(100%);
                             opacity: .5;
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Result
+.root4 {
+    height: 100%;
+    // background-color: black;
+
+    --d: 2500ms;
+    --angle: 90deg;
+    --gradX: 100%;
+    --gradY: 50%;
+    --c1: rgba(168, 239, 255, 1);
+    --c2: rgba(168, 239, 255, 0.1);
+
+    .board_layer {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1620px;
+        height: 80vh;
+        border: 10px solid $color-white;
+
+        border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+        animation: borderRotate var(--d) linear infinite forwards;
+
+        .result_board {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1600px;
+            font-size: 5vh;
+            margin: 0 auto;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            @include FontBold();
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 4vh;
+            text-align: left;
+        }
+
+        th {
+            background-color: transparent;
+        }
+
+        tr {
+
+            th,
+            td {
+                &:last-child {
+                    text-align: center;
+                }
+            }
+
+            td {
+                &:first-child {
+                    position: relative;
+                    padding-left: 16vh;
+
+                    img {
+                        position: absolute;
+                        width: 7.5%;
+                        object-fit: contain;
+                        left: 4vh;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// NExt day
+.root5 {
+    height: 100%;
+    // background-color: black;
+
+    header {
+        width: 100%;
+        text-align: center;
+        font-size: 5.3vw;
+        padding: 5vh 0 10vh;
+        @include FontBold;
+
+        sup {
+            vertical-align: super;
+            font-size: smaller;
+        }
+    }
+
+    --d: 2500ms;
+    --angle: 90deg;
+    --gradX: 100%;
+    --gradY: 50%;
+    --c1: rgba(168, 239, 255, 1);
+    --c2: rgba(168, 239, 255, 0.1);
+
+    .schedule {
+        margin-inline: 13.64vh;
+        border: 10px solid $color-white;
+
+        border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+        animation: borderRotate var(--d) linear infinite forwards;
+
+        @keyframes borderRotate {
+            100% {
+                --angle: 420deg;
+            }
+        }
+
+        .content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-block: 10vh;
+            height: 60vh;
+            background-color: rgba($color: $color-white, $alpha: .1);
+
+            .team {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @include FontBold;
+                font-size: 2vw;
+
+                &:not(:last-child) {
+                    margin-bottom: 3vh;
+                }
+
+                img {
+                    width: 10%;
+                }
+
+                .team1 {
+                    width: 45%;
+                    display: flex;
+                    gap: 2vw;
+                    align-items: center;
+                    justify-content: flex-end;
+
+                    &.lose {
+                        -webkit-filter: grayscale(100%);
+                        /* Safari 6.0 - 9.0 */
+                        filter: grayscale(100%);
+                        opacity: .5;
+                    }
+                }
+
+                span {
+                    width: 10%;
+                    text-align: center;
+                }
+
+                .team2 {
+                    flex: 1;
+                    display: flex;
+                    gap: 2vw;
+                    flex-direction: row-reverse;
+                    align-items: center;
+                    justify-content: flex-end;
+
+                    &.lose {
+                        -webkit-filter: grayscale(100%);
+                        /* Safari 6.0 - 9.0 */
+                        filter: grayscale(100%);
+                        opacity: .5;
                     }
                 }
             }

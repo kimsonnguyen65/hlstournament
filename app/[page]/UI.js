@@ -31,7 +31,7 @@ export default function Index({ dataPage }) {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      if (day.number >= 0 && day.number < 3) {
+      if (day.number >= 0 && day.number < 4) {
         setTimeout(() => {
           setDay(prevDay => ({
             ...prevDay,
@@ -143,6 +143,29 @@ export default function Index({ dataPage }) {
 
   }, [])
 
+  ////////////////////////////////
+  //////// RESULT BOARD
+  dataPage.result?.sort(function (a, b) {
+    // Compare "win" properties in descending order
+    let winComparison = b.win - a.win;
+
+    // If "win" properties are the same, compare "lose" properties in descending order
+    if (winComparison === 0) {
+      let loseComparison = b.lose - a.lose;
+
+      // If "lose" properties are the same, compare "time" properties in ascending order
+      if (loseComparison === 0) {
+        return b.kill - a.kill;
+      }
+
+      return loseComparison;
+    }
+
+    return winComparison;
+  });
+
+  // console.log(dataPage.result)
+
 
   ////////////////////////////////
   // RETURN
@@ -184,6 +207,32 @@ export default function Index({ dataPage }) {
           {
             dataPage && day.number == 0 &&
             <img src="/images/MainBanner.jpg" alt="MainBanner"></img>
+          }
+
+          {
+            dataPage && day.number == 4 &&
+            <div className={styles.board_layer}>
+              <table className={styles.result_board}>
+                <thead>
+                  <tr>
+                    <th>Team</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    dataPage.result.map((e, i) => {
+                      return (
+                        <tr key={i}>
+                          <td><img src={e.team == 'chicken slayers' ? `/images/logoteam/Teamchickenslayers.png` : `/images/logoteam/Team${e.team}.png`} />{e.team.toUpperCase()}</td>
+                          <td>{`${e.win} - ${e.lose}`}</td>
+                        </tr>
+                      )
+                    })
+                  }
+                </tbody>
+              </table>
+            </div>
           }
         </main>
       }
@@ -233,6 +282,64 @@ export default function Index({ dataPage }) {
                   <span>{countdown.seconds < 10 ? '0' + countdown.seconds : countdown.seconds}</span>
                 </p>
               </div>
+            </div>
+          </div>
+        </main>
+      }
+
+      {
+        dataPage && dataPage.slug == 'result' &&
+        <main className={`${styles.root4} ${bg ? styles.bg : ''}`} >
+          <div className={styles.board_layer}>
+            <table className={styles.result_board}>
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  dataPage.result.map((e, i) => {
+                    return (
+                      <tr key={i}>
+                        <td><img src={e.team == 'chicken slayers' ? `/images/logoteam/Teamchickenslayers.png` : `/images/logoteam/Team${e.team}.png`} />{e.team.toUpperCase()}</td>
+                        <td>{`${e.win} - ${e.lose}`}</td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </table>
+          </div>
+        </main>
+      }
+
+      {
+        dataPage && dataPage.slug == 'nextday' &&
+        <main className={`${styles.root5} ${bg ? styles.bg : ''}`} >
+          <header dangerouslySetInnerHTML={{ __html: `GROUP STAGE - DAY 3 (25<sup>th</sup> NOV)` }} />
+          <div className={styles.schedule}>
+            <div className={styles.content}>
+              {
+                dataPage.schedule[2] && dataPage.schedule[2].map((e, i) => {
+                  return (
+                    <div key={i} className={styles.team}>
+                      <div className={`${styles.team1} ${e.lose1 ? styles.lose : ''}`}>
+                        {type === 'full' ? e.team1.toUpperCase() : e.tag1.toUpperCase()}
+                        <img src={e.team1 == 'chicken slayers' ? `/images/logoteam/Teamchickenslayers.png` : `/images/logoteam/Team${e.team1}.png`} alt={e.team1} />
+                      </div>
+
+                      <span>VS</span>
+
+                      <div className={`${styles.team2} ${e.lose2 ? styles.lose : ''}`}>
+                        {type === 'full' ? e.team2.toUpperCase() : e.tag2.toUpperCase()}
+                        <img src={e.team2 == 'chicken slayers' ? `/images/logoteam/Teamchickenslayers.png` : `/images/logoteam/Team${e.team2}.png`} alt={e.team2} />
+                      </div>
+                    </div>
+                  )
+                })
+              }
             </div>
           </div>
         </main>
