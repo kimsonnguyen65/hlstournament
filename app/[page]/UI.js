@@ -146,7 +146,7 @@ export default function Index({ dataPage }) {
     if (bgmatch5) setBG(true), setHourCountDown(18), setMinuteCountDown(0), setTeam1('TCS'), setTeam2('PDSI'), setLogoTeam1('chickenslayers'), setLogoTeam2('pdsi')
     // test
     let test = urlParams.get('test');
-    if (test) setHourCountDown(12), setMinuteCountDown(40), setTeam1('PDSI'), setTeam2('2K'), setLogoTeam1('pdsi'), setLogoTeam2('2k')
+    if (test) setHourCountDown(14), setMinuteCountDown(30), setTeam1('PDSI'), setTeam2('2K'), setLogoTeam1('pdsi'), setLogoTeam2('2k')
 
   }, [])
 
