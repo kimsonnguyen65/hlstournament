@@ -91,12 +91,12 @@ export default function Index({ dataPage }) {
   /////// LAYOUT NEXTGAME
   const [bg, setBG] = useState(false)
   const [team1, setTeam1] = useState('COM')
-  const [team2, setTeam2] = useState('PDSI')
+  const [team2, setTeam2] = useState('T2K')
   const [logoteam1, setLogoTeam1] = useState('combatant')
-  const [logoteam2, setLogoTeam2] = useState('pdsi')
+  const [logoteam2, setLogoTeam2] = useState('2k')
 
   const targetTimezone = 'Asia/Ho_Chi_Minh'; // (GMT+7)
-  const [hourCountDown, setHourCountDown] = useState(16)
+  const [hourCountDown, setHourCountDown] = useState(14)
   const [minuteCountDown, setMinuteCountDown] = useState(0)
   const [secondCountDown, setSecondCountDown] = useState(0)
   const [countdown, setCountdown] = useState(
@@ -130,13 +130,20 @@ export default function Index({ dataPage }) {
     let bgmatch2 = urlParams.get('bgmatch2');
     let match3 = urlParams.get('match3');
     let bgmatch3 = urlParams.get('bgmatch3');
+    let match4 = urlParams.get('match4');
+    let bgmatch4 = urlParams.get('bgmatch4');
+    let match5 = urlParams.get('match5');
+    let bgmatch5 = urlParams.get('bgmatch5');
 
     if (bg) setBG(true)
-    if (match2) setHourCountDown(17), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('2K'), setLogoTeam1('pdsi'), setLogoTeam2('2k')
-    if (bgmatch2) setBG(true), setHourCountDown(17), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('2K'), setLogoTeam1('pdsi'), setLogoTeam2('2k')
-    if (match3) setHourCountDown(18), setMinuteCountDown(0), setTeam1('2K'), setTeam2('HOR'), setLogoTeam1('2k'), setLogoTeam2('hornet')
-    if (bgmatch3) setBG(true), setHourCountDown(18), setMinuteCountDown(0), setTeam1('2K'), setTeam2('HOR'), setLogoTeam1('2k'), setLogoTeam2('hornet')
-
+    if (match2) setHourCountDown(15), setMinuteCountDown(0), setTeam1('HOR'), setTeam2('COM'), setLogoTeam1('hornet'), setLogoTeam2('combatant')
+    if (bgmatch2) setBG(true), setHourCountDown(15), setMinuteCountDown(0), setTeam1('HOR'), setTeam2('COM'), setLogoTeam1('hornet'), setLogoTeam2('combatant')
+    if (match3) setHourCountDown(16), setMinuteCountDown(0), setTeam1('T2K'), setTeam2('TCS'), setLogoTeam1('2k'), setLogoTeam2('chickenslayers')
+    if (bgmatch3) setBG(true), setHourCountDown(16), setMinuteCountDown(0), setTeam1('T2K'), setTeam2('TCS'), setLogoTeam1('2k'), setLogoTeam2('chickenslayers')
+    if (match4) setHourCountDown(17), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('HOR'), setLogoTeam1('pdsi'), setLogoTeam2('hornet')
+    if (bgmatch4) setBG(true), setHourCountDown(17), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('HOR'), setLogoTeam1('pdsi'), setLogoTeam2('hornet')
+    if (match5) setHourCountDown(18), setMinuteCountDown(0), setTeam1('TCS'), setTeam2('PDSI'), setLogoTeam1('chickenslayers'), setLogoTeam2('pdsi')
+    if (bgmatch5) setBG(true), setHourCountDown(18), setMinuteCountDown(0), setTeam1('TCS'), setTeam2('PDSI'), setLogoTeam1('chickenslayers'), setLogoTeam2('pdsi')
     // test
     let test = urlParams.get('test');
     if (test) setHourCountDown(12), setMinuteCountDown(40), setTeam1('PDSI'), setTeam2('2K'), setLogoTeam1('pdsi'), setLogoTeam2('2k')
@@ -153,9 +160,12 @@ export default function Index({ dataPage }) {
     if (winComparison === 0) {
       let loseComparison = b.lose - a.lose;
 
-      // If "lose" properties are the same, compare "time" properties in ascending order
+      // If "lose" properties are the same, compare "totalKill" properties in ascending order
       if (loseComparison === 0) {
-        return b.kill - a.kill;
+        let totalKilla = a.kill.reduce((acc, current) => acc + current, 0);
+        let totalKillb = b.kill.reduce((acc, current) => acc + current, 0);
+
+        return totalKillb - totalKilla;
       }
 
       return loseComparison;
@@ -217,15 +227,18 @@ export default function Index({ dataPage }) {
                   <tr>
                     <th>Team</th>
                     <th>Result</th>
+                    <th>Kill</th>
                   </tr>
                 </thead>
                 <tbody>
                   {
                     dataPage.result.map((e, i) => {
+                      let totalKill = e.kill.reduce((acc, current) => acc + current, 0);
                       return (
                         <tr key={i}>
                           <td><img src={e.team == 'chicken slayers' ? `/images/logoteam/Teamchickenslayers.png` : `/images/logoteam/Team${e.team}.png`} />{e.team.toUpperCase()}</td>
                           <td>{`${e.win} - ${e.lose}`}</td>
+                          <td>{totalKill}</td>
                         </tr>
                       )
                     })
@@ -257,7 +270,7 @@ export default function Index({ dataPage }) {
       {
         dataPage && dataPage.slug == 'nextgame' &&
         <main className={`${styles.root3} ${bg ? styles.bg : ''}`} >
-          <header dangerouslySetInnerHTML={{ __html: `GROUP STAGE - DAY 2 (18<sup>th</sup> NOV) ` }} />
+          <header dangerouslySetInnerHTML={{ __html: `GROUP STAGE - DAY 3 (25<sup>th</sup> NOV) ` }} />
           <div className={styles.board}>
             <div className={styles.content}>
               <div>
@@ -296,15 +309,18 @@ export default function Index({ dataPage }) {
                 <tr>
                   <th>Team</th>
                   <th>Result</th>
+                  <th>Kill</th>
                 </tr>
               </thead>
               <tbody>
                 {
                   dataPage.result.map((e, i) => {
+                    let totalKill = e.kill.reduce((acc, current) => acc + current, 0);
                     return (
                       <tr key={i}>
                         <td><img src={e.team == 'chicken slayers' ? `/images/logoteam/Teamchickenslayers.png` : `/images/logoteam/Team${e.team}.png`} />{e.team.toUpperCase()}</td>
                         <td>{`${e.win} - ${e.lose}`}</td>
+                        <td>{totalKill}</td>
                       </tr>
                     )
                   })

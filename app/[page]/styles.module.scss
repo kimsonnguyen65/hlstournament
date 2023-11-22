@@ -178,7 +178,9 @@
 
             th,
             td {
-                &:last-child {
+
+                &:last-child,
+                &:nth-child(2) {
                     text-align: center;
                 }
             }
@@ -432,7 +434,9 @@
 
             th,
             td {
-                &:last-child {
+
+                &:last-child,
+                &:nth-child(2) {
                     text-align: center;
                 }
             }
