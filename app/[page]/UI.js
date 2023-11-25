@@ -96,7 +96,7 @@ export default function Index({ dataPage }) {
   const [logoteam2, setLogoTeam2] = useState('2k')
 
   const targetTimezone = 'Asia/Ho_Chi_Minh'; // (GMT+7)
-  const [hourCountDown, setHourCountDown] = useState(14)
+  const [hourCountDown, setHourCountDown] = useState(15)
   const [minuteCountDown, setMinuteCountDown] = useState(0)
   const [secondCountDown, setSecondCountDown] = useState(0)
   const [countdown, setCountdown] = useState(
@@ -136,14 +136,14 @@ export default function Index({ dataPage }) {
     let bgmatch5 = urlParams.get('bgmatch5');
 
     if (bg) setBG(true)
-    if (match2) setHourCountDown(15), setMinuteCountDown(0), setTeam1('HOR'), setTeam2('COM'), setLogoTeam1('hornet'), setLogoTeam2('combatant')
-    if (bgmatch2) setBG(true), setHourCountDown(15), setMinuteCountDown(0), setTeam1('HOR'), setTeam2('COM'), setLogoTeam1('hornet'), setLogoTeam2('combatant')
-    if (match3) setHourCountDown(16), setMinuteCountDown(0), setTeam1('T2K'), setTeam2('TCS'), setLogoTeam1('2k'), setLogoTeam2('chickenslayers')
-    if (bgmatch3) setBG(true), setHourCountDown(16), setMinuteCountDown(0), setTeam1('T2K'), setTeam2('TCS'), setLogoTeam1('2k'), setLogoTeam2('chickenslayers')
-    if (match4) setHourCountDown(17), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('HOR'), setLogoTeam1('pdsi'), setLogoTeam2('hornet')
-    if (bgmatch4) setBG(true), setHourCountDown(17), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('HOR'), setLogoTeam1('pdsi'), setLogoTeam2('hornet')
-    if (match5) setHourCountDown(18), setMinuteCountDown(0), setTeam1('TCS'), setTeam2('PDSI'), setLogoTeam1('chickenslayers'), setLogoTeam2('pdsi')
-    if (bgmatch5) setBG(true), setHourCountDown(18), setMinuteCountDown(0), setTeam1('TCS'), setTeam2('PDSI'), setLogoTeam1('chickenslayers'), setLogoTeam2('pdsi')
+    if (match2) setHourCountDown(16), setMinuteCountDown(0), setTeam1('T2K'), setTeam2('TCS'), setLogoTeam1('2k'), setLogoTeam2('chickenslayers')
+    if (bgmatch2) setBG(true), setHourCountDown(16), setMinuteCountDown(0), setTeam1('T2K'), setTeam2('TCS'), setLogoTeam1('2k'), setLogoTeam2('chickenslayers')
+    if (match3) setHourCountDown(17), setMinuteCountDown(0), setTeam1('TCS'), setTeam2('PDSI'), setLogoTeam1('chickenslayers'), setLogoTeam2('pdsi')
+    if (bgmatch3) setBG(true), setHourCountDown(17), setMinuteCountDown(0), setTeam1('TCS'), setTeam2('PDSI'), setLogoTeam1('chickenslayers'), setLogoTeam2('pdsi')
+    if (match4) setHourCountDown(18), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('HOR'), setLogoTeam1('pdsi'), setLogoTeam2('hornet')
+    if (bgmatch4) setBG(true), setHourCountDown(18), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('HOR'), setLogoTeam1('pdsi'), setLogoTeam2('hornet')
+    if (match5) setHourCountDown(19), setMinuteCountDown(0), setTeam1('HOR'), setTeam2('COM'), setLogoTeam1('hornet'), setLogoTeam2('combatant')
+    if (bgmatch5) setBG(true), setHourCountDown(19), setMinuteCountDown(0), setTeam1('HOR'), setTeam2('COM'), setLogoTeam1('hornet'), setLogoTeam2('combatant')
     // test
     let test = urlParams.get('test');
     if (test) setHourCountDown(14), setMinuteCountDown(30), setTeam1('PDSI'), setTeam2('2K'), setLogoTeam1('pdsi'), setLogoTeam2('2k')
