@@ -90,13 +90,13 @@ export default function Index({ dataPage }) {
   ////////////////////////////////
   /////// LAYOUT NEXTGAME
   const [bg, setBG] = useState(false)
-  const [team1, setTeam1] = useState('COM')
-  const [team2, setTeam2] = useState('T2K')
-  const [logoteam1, setLogoTeam1] = useState('combatant')
-  const [logoteam2, setLogoTeam2] = useState('2k')
+  const [team1, setTeam1] = useState('PDSI')
+  const [team2, setTeam2] = useState('TCS')
+  const [logoteam1, setLogoTeam1] = useState('pdsi')
+  const [logoteam2, setLogoTeam2] = useState('chickenslayers')
 
   const targetTimezone = 'Asia/Ho_Chi_Minh'; // (GMT+7)
-  const [hourCountDown, setHourCountDown] = useState(15)
+  const [hourCountDown, setHourCountDown] = useState(14)
   const [minuteCountDown, setMinuteCountDown] = useState(0)
   const [secondCountDown, setSecondCountDown] = useState(0)
   const [countdown, setCountdown] = useState(
@@ -134,16 +134,20 @@ export default function Index({ dataPage }) {
     let bgmatch4 = urlParams.get('bgmatch4');
     let match5 = urlParams.get('match5');
     let bgmatch5 = urlParams.get('bgmatch5');
+    let match6 = urlParams.get('match6');
+    let bgmatch6 = urlParams.get('bgmatch6');
 
     if (bg) setBG(true)
-    if (match2) setHourCountDown(16), setMinuteCountDown(0), setTeam1('T2K'), setTeam2('TCS'), setLogoTeam1('2k'), setLogoTeam2('chickenslayers')
-    if (bgmatch2) setBG(true), setHourCountDown(16), setMinuteCountDown(0), setTeam1('T2K'), setTeam2('TCS'), setLogoTeam1('2k'), setLogoTeam2('chickenslayers')
-    if (match3) setHourCountDown(17), setMinuteCountDown(0), setTeam1('TCS'), setTeam2('PDSI'), setLogoTeam1('chickenslayers'), setLogoTeam2('pdsi')
-    if (bgmatch3) setBG(true), setHourCountDown(17), setMinuteCountDown(0), setTeam1('TCS'), setTeam2('PDSI'), setLogoTeam1('chickenslayers'), setLogoTeam2('pdsi')
-    if (match4) setHourCountDown(18), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('HOR'), setLogoTeam1('pdsi'), setLogoTeam2('hornet')
-    if (bgmatch4) setBG(true), setHourCountDown(18), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('HOR'), setLogoTeam1('pdsi'), setLogoTeam2('hornet')
-    if (match5) setHourCountDown(19), setMinuteCountDown(0), setTeam1('HOR'), setTeam2('COM'), setLogoTeam1('hornet'), setLogoTeam2('combatant')
-    if (bgmatch5) setBG(true), setHourCountDown(19), setMinuteCountDown(0), setTeam1('HOR'), setTeam2('COM'), setLogoTeam1('hornet'), setLogoTeam2('combatant')
+    if (match2) setHourCountDown(15), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('TCS'), setLogoTeam1('pdsi'), setLogoTeam2('chickenslayers')
+    if (bgmatch2) setBG(true), setHourCountDown(15), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('TCS'), setLogoTeam1('pdsi'), setLogoTeam2('chickenslayers')
+    if (match3) setHourCountDown(16), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('TCS'), setLogoTeam1('pdsi'), setLogoTeam2('chickenslayers')
+    if (bgmatch3) setBG(true), setHourCountDown(16), setMinuteCountDown(0), setTeam1('PDSI'), setTeam2('TCS'), setLogoTeam1('pdsi'), setLogoTeam2('chickenslayers')
+    if (match4) setHourCountDown(17), setMinuteCountDown(0), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
+    if (bgmatch4) setBG(true), setHourCountDown(17), setMinuteCountDown(0), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
+    if (match5) setHourCountDown(18), setMinuteCountDown(0), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
+    if (bgmatch5) setBG(true), setHourCountDown(18), setMinuteCountDown(0), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
+    if (match6) setHourCountDown(19), setMinuteCountDown(0), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
+    if (bgmatch6) setBG(true), setHourCountDown(19), setMinuteCountDown(0), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
     // test
     let test = urlParams.get('test');
     if (test) setHourCountDown(14), setMinuteCountDown(30), setTeam1('PDSI'), setTeam2('2K'), setLogoTeam1('pdsi'), setLogoTeam2('2k')
@@ -216,7 +220,7 @@ export default function Index({ dataPage }) {
 
           {
             dataPage && day.number == 0 &&
-            <img src="/images/MainBanner.jpg" alt="MainBanner"></img>
+            <img src="/images/MainBannerKnockout.jpg" alt="MainBannerKnockout"></img>
           }
 
           {
@@ -270,7 +274,7 @@ export default function Index({ dataPage }) {
       {
         dataPage && dataPage.slug == 'nextgame' &&
         <main className={`${styles.root3} ${bg ? styles.bg : ''}`} >
-          <header dangerouslySetInnerHTML={{ __html: `GROUP STAGE - DAY 3 (25<sup>th</sup> NOV) ` }} />
+          <header dangerouslySetInnerHTML={{ __html: `KNOCKOUT STAGE - DAY 1 (2<sup>nd</sup> DEC) ` }} />
           <div className={styles.board}>
             <div className={styles.content}>
               <div>
