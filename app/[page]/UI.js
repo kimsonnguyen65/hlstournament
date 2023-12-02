@@ -274,7 +274,7 @@ export default function Index({ dataPage }) {
       {
         dataPage && dataPage.slug == 'nextgame' &&
         <main className={`${styles.root3} ${bg ? styles.bg : ''}`} >
-          <header dangerouslySetInnerHTML={{ __html: `KNOCKOUT STAGE - DAY 1 (2<sup>nd</sup> DEC) ` }} />
+          <header dangerouslySetInnerHTML={{ __html: `KNOCKOUT STAGE - (2<sup>nd</sup> DEC) ` }} />
           <div className={styles.board}>
             <div className={styles.content}>
               <div>
