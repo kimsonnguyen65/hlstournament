@@ -90,14 +90,14 @@ export default function Index({ dataPage }) {
   ////////////////////////////////
   /////// LAYOUT NEXTGAME
   const [bg, setBG] = useState(false)
-  const [team1, setTeam1] = useState('PDSI')
+  const [team1, setTeam1] = useState('COM')
   const [team2, setTeam2] = useState('TCS')
-  const [logoteam1, setLogoTeam1] = useState('pdsi')
+  const [logoteam1, setLogoTeam1] = useState('combatant')
   const [logoteam2, setLogoTeam2] = useState('chickenslayers')
 
   const targetTimezone = 'Asia/Ho_Chi_Minh'; // (GMT+7)
   const [hourCountDown, setHourCountDown] = useState(14)
-  const [minuteCountDown, setMinuteCountDown] = useState(15)
+  const [minuteCountDown, setMinuteCountDown] = useState(30)
   const [secondCountDown, setSecondCountDown] = useState(0)
   const [countdown, setCountdown] = useState(
     calculateCountdown(hourCountDown, minuteCountDown, secondCountDown, targetTimezone)
@@ -138,16 +138,16 @@ export default function Index({ dataPage }) {
     let bgmatch6 = urlParams.get('bgmatch6');
 
     if (bg) setBG(true)
-    if (match2) setHourCountDown(15), setMinuteCountDown(35), setTeam1('PDSI'), setTeam2('TCS'), setLogoTeam1('pdsi'), setLogoTeam2('chickenslayers')
-    if (bgmatch2) setBG(true), setHourCountDown(15), setMinuteCountDown(35), setTeam1('PDSI'), setTeam2('TCS'), setLogoTeam1('pdsi'), setLogoTeam2('chickenslayers')
-    if (match3) setHourCountDown(16), setMinuteCountDown(15), setTeam1('PDSI'), setTeam2('TCS'), setLogoTeam1('pdsi'), setLogoTeam2('chickenslayers')
-    if (bgmatch3) setBG(true), setHourCountDown(16), setMinuteCountDown(15), setTeam1('PDSI'), setTeam2('TCS'), setLogoTeam1('pdsi'), setLogoTeam2('chickenslayers')
-    if (match4) setHourCountDown(17), setMinuteCountDown(0), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
-    if (bgmatch4) setBG(true), setHourCountDown(17), setMinuteCountDown(0), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
-    if (match5) setHourCountDown(17), setMinuteCountDown(30), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
-    if (bgmatch5) setBG(true), setHourCountDown(17), setMinuteCountDown(30), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
-    if (match6) setHourCountDown(18), setMinuteCountDown(30), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
-    if (bgmatch6) setBG(true), setHourCountDown(18), setMinuteCountDown(30), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
+    if (match2) setHourCountDown(15), setMinuteCountDown(30), setTeam1('COM'), setTeam2('TCS'), setLogoTeam1('combatant'), setLogoTeam2('chickenslayers')
+    if (bgmatch2) setBG(true), setHourCountDown(15), setMinuteCountDown(30), setTeam1('COM'), setTeam2('TCS'), setLogoTeam1('combatant'), setLogoTeam2('chickenslayers')
+    if (match3) setHourCountDown(16), setMinuteCountDown(30), setTeam1('COM'), setTeam2('TCS'), setLogoTeam1('combatant'), setLogoTeam2('chickenslayers')
+    if (bgmatch3) setBG(true), setHourCountDown(16), setMinuteCountDown(30), setTeam1('COM'), setTeam2('TCS'), setLogoTeam1('combatant'), setLogoTeam2('chickenslayers')
+    if (match4) setHourCountDown(17), setMinuteCountDown(30), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
+    if (bgmatch4) setBG(true), setHourCountDown(17), setMinuteCountDown(30), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
+    if (match5) setHourCountDown(18), setMinuteCountDown(30), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
+    if (bgmatch5) setBG(true), setHourCountDown(18), setMinuteCountDown(30), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
+    if (match6) setHourCountDown(19), setMinuteCountDown(30), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
+    if (bgmatch6) setBG(true), setHourCountDown(19), setMinuteCountDown(30), setTeam1('COM'), setTeam2('T2K'), setLogoTeam1('combatant'), setLogoTeam2('2k')
     // test
     let test = urlParams.get('test');
     if (test) setHourCountDown(14), setMinuteCountDown(30), setTeam1('PDSI'), setTeam2('2K'), setLogoTeam1('pdsi'), setLogoTeam2('2k')
