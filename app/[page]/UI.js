@@ -156,7 +156,7 @@ export default function Index({ dataPage }) {
 
   ////////////////////////////////
   //////// RESULT BOARD
-  dataPage.result?.sort(function (a, b) {
+  dataPage?.result?.sort(function (a, b) {
     // Compare "win" properties in descending order
     let winComparison = b.win - a.win;
 
@@ -362,6 +362,66 @@ export default function Index({ dataPage }) {
               }
             </div>
           </div>
+        </main>
+      }
+      {
+        dataPage && dataPage.slug == 'test' &&
+        <main className={styles.test}>
+          <ul>
+            <li>
+              <div className={styles.articleItem}>
+                <div className={styles.img}></div>
+                <div className={styles.tag}>tag thứ 1</div>
+                <div className={styles.title}>Sản phẩm 1</div>
+                <div className={styles.btn}>Liên hệ</div>
+              </div>
+            </li>
+
+            <li>
+              <div className={styles.articleItem}>
+                <div className={styles.img}></div>
+                <div className={styles.tag}>tag thứ 1</div>
+                <div className={styles.title}>Sản phẩm 1</div>
+                <div className={styles.btn}>Liên hệ</div>
+              </div>
+            </li>
+
+            <li>
+              <div className={styles.articleItem}>
+                <div className={styles.img}></div>
+                <div className={styles.tag}>tag thứ 1</div>
+                <div className={styles.title}>Sản phẩm 1</div>
+                <div className={styles.btn}>Liên hệ</div>
+              </div>
+            </li>
+
+            <li>
+              <div className={styles.articleItem}>
+                <div className={styles.img}></div>
+                <div className={styles.tag}>tag thứ 1</div>
+                <div className={styles.title}>Sản phẩm 1</div>
+                <div className={styles.btn}>Liên hệ</div>
+              </div>
+            </li>
+
+            <li>
+              <div className={styles.articleItem}>
+                <div className={styles.img}></div>
+                <div className={styles.tag}>tag thứ 1</div>
+                <div className={styles.title}>Sản phẩm 1 Sản phẩm 1 Sản phẩm 1 Sản phẩm 1</div>
+                <div className={styles.btn}>Liên hệ</div>
+              </div>
+            </li>
+
+            <li>
+              <div className={styles.articleItem}>
+                <div className={styles.img}></div>
+                <div className={styles.tag}>tag thứ 1</div>
+                <div className={styles.title}>Sản phẩm 1</div>
+                <div className={styles.btn}>Liên hệ</div>
+              </div>
+            </li>
+          </ul>
         </main>
       }
     </>
