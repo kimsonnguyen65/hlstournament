@@ -371,7 +371,7 @@ export default function Index({ dataPage }) {
             <li>
               <div className={styles.articleItem}>
                 <div className={styles.img}></div>
-                <div className={styles.tag}>tag thứ 1</div>
+                <div className={styles.tag}>tag thứ 1 tag thứ 1 tag thứ 1 tag thứ 1</div>
                 <div className={styles.title}>Sản phẩm 1</div>
                 <div className={styles.btn}>Liên hệ</div>
               </div>
@@ -408,7 +408,7 @@ export default function Index({ dataPage }) {
               <div className={styles.articleItem}>
                 <div className={styles.img}></div>
                 <div className={styles.tag}>tag thứ 1</div>
-                <div className={styles.title}>Sản phẩm 1 Sản phẩm 1 Sản phẩm 1 Sản phẩm 1</div>
+                <div className={styles.title}>Sản phẩm 1 Sản phẩm 1 Sản phẩm 1 Sản phẩm 1 Sản phẩm 1 Sản phẩm 1</div>
                 <div className={styles.btn}>Liên hệ</div>
               </div>
             </li>
