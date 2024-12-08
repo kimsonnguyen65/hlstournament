@@ -90,7 +90,7 @@ export default function Index({ dataPage }) {
   ////////////////////////////////
   /////// LAYOUT NEXTGAME
   const [bg, setBG] = useState(false)
-  const [team1, setTeam1] = useState('HLS T4')
+  const [team1, setTeam1] = useState('T4')
   const [team2, setTeam2] = useState('T2K')
   const [logoteam1, setLogoTeam1] = useState('t4')
   const [logoteam2, setLogoTeam2] = useState('t2k')
