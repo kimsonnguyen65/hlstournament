@@ -96,7 +96,7 @@ export default function Index({ dataPage }) {
   const [logoteam2, setLogoTeam2] = useState('chickenslayers')
 
   const targetTimezone = 'Asia/Ho_Chi_Minh'; // (GMT+7)
-  const [hourCountDown, setHourCountDown] = useState(18)
+  const [hourCountDown, setHourCountDown] = useState(19)
   const [minuteCountDown, setMinuteCountDown] = useState(45)
   const [secondCountDown, setSecondCountDown] = useState(0)
   const [countdown, setCountdown] = useState(
