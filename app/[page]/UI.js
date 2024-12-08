@@ -90,10 +90,10 @@ export default function Index({ dataPage }) {
   ////////////////////////////////
   /////// LAYOUT NEXTGAME
   const [bg, setBG] = useState(false)
-  const [team1, setTeam1] = useState('ZUM2')
+  const [team1, setTeam1] = useState('Z2')
   const [team2, setTeam2] = useState('TCS')
   const [logoteam1, setLogoTeam1] = useState('zum2')
-  const [logoteam2, setLogoTeam2] = useState('tcs')
+  const [logoteam2, setLogoTeam2] = useState('chickenslayers')
 
   const targetTimezone = 'Asia/Ho_Chi_Minh'; // (GMT+7)
   const [hourCountDown, setHourCountDown] = useState(17)
