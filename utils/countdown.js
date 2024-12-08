@@ -14,8 +14,11 @@ export function calculateCountdown(hour, minute, second, timeZone) {
     // Calculate the difference between now and the target time
     const diff = targetDateTime.diff(now, ['minutes', 'seconds']).toObject();
 
+    const remainingMinutes = Math.max(0, Math.floor(diff.minutes || 0));
+    const remainingSeconds = Math.max(0, Math.floor(diff.seconds || 0));
+
     return {
-        minutes: Math.floor(diff.minutes),
-        seconds: Math.floor(diff.seconds),
+        minutes: remainingMinutes,
+        seconds: remainingSeconds,
     };
 }
