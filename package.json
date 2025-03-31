@@ -6,7 +6,10 @@
     "dev": "next dev -p 1911",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true next build",
+    "build:prod": "NODE_ENV=production next build",
+    "start:prod": "NODE_ENV=production next start"
   },
   "dependencies": {
     "luxon": "^3.4.4",
@@ -16,7 +19,9 @@
     "sass": "^1.69.5"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.0.2",
     "eslint": "^8",
-    "eslint-config-next": "14.0.2"
+    "eslint-config-next": "14.0.2",
+    "file-loader": "^6.2.0"
   }
 }
